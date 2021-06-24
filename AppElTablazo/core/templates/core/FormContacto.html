@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="static/core/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/core/css/carousel.css" rel="stylesheet">
+    <link href="static/core/css/mycss.css" rel="stylesheet">
+    <script src="static/core/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+
+    <title>El Tablazo</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Productos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'Mediterranea' %}">Tabla Maditerranea</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Griega' %}">Tabla Griega</a></li>            
+                    <li><a class="dropdown-item"  href="{% url 'Tropical' %}">Tabla Tropical</a></li>
+                    </ul>
+                    </li> 
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'QuienesSomos' %}"  tabindex="-1"> Quienes somos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'Formulario' %}"  tabindex="-1"> Contacto</a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'Proveedores' %}"  tabindex="-1"> Lista de proveedores</a>
+                      </li>
+                </ul>
+                
+                </div>
+            </div>
+            </nav>
+    </header>
+
+    <main>
+        <h1></h1>
+        <h1>Contacto</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="static/core/imagenes/contact.png" width="480" height="480" alt="IMGContacto">
+                </div>
+                <div class="col-sm-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputRun">RUN</label>
+                            <input type="text" class="form-control" id="inputRun"
+                                placeholder="Ingrese su rut sin punto ni guion" minlength="7" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNombre">Nombre </label>
+                            <input type="text" class="form-control" id="inputNombre" placeholder="Nombre Apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEdad">Edad</label>
+                            <input type="number" class="form-control" id="inputRun" placeholder="Ingrese su edad"
+                                MIN="18" MAX="110" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Correo</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCel">Telefono</label>
+                            <input type="text" class="form-control" id="inputCel" placeholder="Numero de contacto"
+                                maxlength="12">
+                        </div>
+                        <div class="form-group">
+                            <label for="motivoSelect1">Motivo</label>
+                            <select class="form-control" id="motivoSelect1" required>
+                                <option value="">--Seleccione--</option>
+                                <option>Consulta</option>
+                                <option>Reclamo</option>
+                                <option>Sugerencia</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentarioTextarea1">Comentario</label>
+                            <textarea class="form-control" id="comentarioTextarea1" rows="3" maxlength="500"
+                                required></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" id=enviar onclick="ValidarForm()"
+                                    class="btn btn-primary">Enviar</button>
+                            </div>
+                            <p><a class="btn btn-secondary" href="{% url 'index' %}">Volver</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+
+        <script>
+            function ValidarForm() {
+                event.preventDefault;
+                var runvalidado = ValidaRUN();
+                var correo = $("#inputEmail").val().trim();
+                var celu = $("#inputCel").val().trim();
+
+
+                if (celu == '' && correo == '') {
+                    alert("Debe ingresar al menos un campo de telefono o correo")
+                } else {
+                    if (celu != '') {
+                        var fnCelu = ValidarCelu();
+                        if (fnCelu) {
+                            
+                        }else{
+                        }
+                    }
+                    if (correo != '') {
+                        var fnCorreo = ValidarCorreo();
+                        if (fnCorreo) {
+                            
+                        }else{
+
+                        }
+                    }
+                }
+
+            }
+
+            function ValidaRUN() {
+                var txtRun = $("#inputRun").val();
+
+                if (txtRun != '') {
+                    var toText = txtRun.toString();//para convertir a string 
+                    var dv = toText.slice(-1); //obtener el ultimo caracter
+                    var RunSinUltimoDigito = txtRun.substring(0, txtRun.length - 1);//obtener la cadena sin el ultimo caracter
+                    console.log(dv);
+                    $.get("https://api.libreapi.cl/rut/digit?rut=" + RunSinUltimoDigito, function (data) {
+                        console.log(data);
+                        if (data.status == "success") {
+                            if (data.data.digit == dv) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+
+                        } else {
+                            return false;
+                        }
+                    });
+                } else {
+                    alert("Debe ingresar su rut")
+                    return false;
+                }
+            }
+
+            function ValidarCorreo() {
+                var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                if (regex.test($('#inputEmail').val().trim())) {
+                    return true
+                } else {
+                    alert("Formato de correo incorrecto")
+                    return false;
+                }
+            }
+
+            function ValidarCelu() {
+                var regex = /^(\+?56)?(\s?)(0?9)(\s?)[9876543]\d{7}$/;
+                if (regex.test($('#inputCel').val().trim())) {
+                    
+                    return true;
+                } else {
+                    alert("Formato incorrecto debe comenzar con +569")
+                    return false;
+                }
+            }
+
+
+
+        </script>
+
+        <script src="static/core/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    </main>
+
+</body>
+
+</html>

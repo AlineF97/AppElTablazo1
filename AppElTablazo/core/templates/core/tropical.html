@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+ 
+    <title>El Tablazo</title>
+<link href="static/core/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/core/css/mycss.css" rel="stylesheet">
+
+
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Productos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'Mediterranea' %}">Tabla Maditerranea</a></li>
+            <li><a class="dropdown-item" href="{% url 'Griega' %}">Tabla Griega</a></li>            
+            <li><a class="dropdown-item"  href="{% url 'Tropical' %}">Tabla Tropical</a></li>
+            </ul>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'QuienesSomos' %}"  tabindex="-1"> Quienes somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Formulario' %}"  tabindex="-1"> Contacto</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Proveedores' %}"  tabindex="-1"> Lista de proveedores</a>
+              </li>
+        </ul>
+        
+        </div>
+    </div>
+    </nav>
+</header>
+
+<main>
+
+<div class="container"> 
+     <h1 class="mt-5" >Tabla 3: Tropical</h1>
+   <div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+	 <img src="static/core/imagenes/tropical.jpeg" class="tamanoImagen" alt="Tabla Tropical">
+	</div>
+    <div class="col-sm-4">
+	<ul>
+  <li>Variedad de frutas</li>
+  <li>Frutos secos</li>
+  <li>Tomates Cherries</li>
+  <li>Palmitos</li>
+  <li>Jamon</li>
+  <li>Pepinillos</li>
+  <li>Aceitunas</li>
+
+</ul> 
+	</div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+  <p> </p>
+	<p>Valor $14.990</p>
+
+    <div class="col-sm-8">
+        <img src="static/core/imagenes/pago2.png" style ="width:100px;height:50px" alt="Tabla Mediterranea">
+       </div>
+       <p> </a></p>
+       <p><a class="btn btn-secondary" href="{% url 'index' %}">Volver</a></p>
+	</div>
+    
+  </div>
+</div>
+     
+</div>
+ 
+</div>
+     
+</main>
+
+
+    <script src="static/core/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
