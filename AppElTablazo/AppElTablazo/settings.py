@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_proveedor',
     'corsheaders',
+    'rest_framework.authtoken',
 
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'rest_framework.authtoken',
+
 ]
 
 ROOT_URLCONF = 'AppElTablazo.urls'
@@ -140,4 +142,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS=['*']
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+		'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
