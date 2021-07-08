@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 
-
 @csrf_exempt
 @api_view(['POST'])
 def login(request):
@@ -21,7 +20,7 @@ def login(request):
 	try:
 		user = User.objects.get(username=username)
 	except User.DoesNotExist:
-		return Response("Usuario invÃ¡lido")
+		return Response("Usuario invalido")
 
 	#validamos la pass
 	pass_valido = check_password(password, user.password)
@@ -33,3 +32,4 @@ def login(request):
 	token, created = Token.objects.get_or_create(user=user)
 	#print(token.key)
 	return Response(token.key)
+
